@@ -17,8 +17,8 @@
         // a dummy placeholder image
         const CMS_IMG_PLACEHOLDER  = '/libs/cq/ui/widgets/themes/default/placeholders/img.png';
         
-        // RAPID's boot server port
-        const RAPID_PORT = 9632;
+        // RAPID's origin (usually same as the CMS')
+        const RAPID_ORIGIN = CMS_ORIGIN;
         
         // optional and specific to this app:
         // whether tpp allow content authors to add new components to pages
@@ -29,10 +29,7 @@
 
         // templates dir
         define('DIR_TPL', ROOT . '/tpl');
-
-        // resolves RAPID's origin
-        define('RAPID_ORIGIN', preg_replace('/:[1-9][0-9]*$/', '', CMS_ORIGIN) . ':' . RAPID_PORT);
-
+        
         // resolves the CMS origin (whether to add credentials or not)
         define('CMS_CONTENT_ORIGIN', empty(CMS_CREDS) ? CMS_ORIGIN : preg_replace(
             '/^(https?:\/\/)(.*)/', '$1' . CMS_CREDS . '@$2' , CMS_ORIGIN));
