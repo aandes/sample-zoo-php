@@ -11,7 +11,7 @@
         // the CMS origin
         const CMS_ORIGIN = 'http://localhost:4502';
         
-        // the CMS use credentials
+        // the CMS use credentials (leave empty if credentials are not needed)
         const CMS_CREDS = 'admin:admin';
         
         // a dummy placeholder image
@@ -26,6 +26,10 @@
     
 
     // run-time configurations
+        
+        // (optional) pass the current locale as a context path in RAPID script URL
+        // for example '/en/us' or '/fr'
+        define('CMS_CONTENT_CONTEXT', '');
 
         // templates dir
         define('DIR_TPL', ROOT . '/tpl');
@@ -35,5 +39,5 @@
             '/^(https?:\/\/)(.*)/', '$1' . CMS_CREDS . '@$2' , CMS_ORIGIN));
         
         // templated string to resolve content paths
-        define('CMS_CONTENT_FORMAT', CMS_CONTENT_ORIGIN . '/content/' . CMS_MIRROR . 
+        define('CMS_CONTENT_FORMAT', CMS_CONTENT_ORIGIN . '/content/' . CMS_MIRROR . CMS_CONTENT_CONTEXT .
             '/%s/jcr:content/%s.infinity.json?wcmmode=disabled');
