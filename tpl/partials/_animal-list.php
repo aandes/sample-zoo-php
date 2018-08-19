@@ -8,12 +8,16 @@
 
         if (!string_starts_with('jcr:', $key)) {
 
-            // and cast any element with a key not starting with 'jcr:' 
-            // to an animalcard component
-            tpl_include('partials/components/_animal-card',
-                $value, array('key'=> "cards/$key"));
+            ?><li><?php
 
-            ++$count;
+                // and cast any element with a key not starting with 'jcr:' 
+                // to an animalcard component
+                tpl_include('partials/components/_animal-card',
+                    $value, array('key'=> "cards/$key"));
+
+                ++$count;
+
+            ?></li><?php
 
         }
 
@@ -23,9 +27,12 @@
     // to allow arbitrary items, use a container component (e.g. parsys)
     if (AUTHORING && ALLOW_COMPONENTS_INSERTION) {
 
-        tpl_include('partials/components/_animal-card', array(), 
-            array('key'=> "cards/card$count"));
+        ?><li><?php
 
+            tpl_include('partials/components/_animal-card', array(), 
+                array('key'=> "cards/card$count"));
+
+        ?></li><?php
     }
     
 ?></ul>
